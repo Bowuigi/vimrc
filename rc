@@ -1,0 +1,69 @@
+" Bowuigi's VimRC
+
+call plug#begin('~/.vim/plugged')
+Plug 'tpope/vim-sensible'
+Plug 'tmsvg/pear-tree'
+Plug 'ervandew/supertab'
+Plug 'neoclide/coc.nvim'
+Plug 'konfekt/vim-alias'
+call plug#end()
+
+" Personal Preferences
+set tabstop=4
+set noexpandtab
+set shiftwidth=4
+set smartindent
+set autochdir
+set ignorecase
+set showcmd
+set autowriteall
+set splitbelow splitright 
+
+" Disable arrow keys
+inoremap <Up> <nop>
+nnoremap <Up> <nop>
+inoremap <Down> <nop>
+nnoremap <Down> <nop>
+inoremap <Left> <nop>
+nnoremap <Left> <nop>
+inoremap <Right> <nop>
+nnoremap <Right> <nop>
+
+" Relative line numbering
+set number
+set relativenumber
+
+augroup aliases
+	autocmd!
+	autocmd VimEnter * :Alias Mev !groff\ -me\ -Tpdf\ -Kutf8\ '%'\ |\ zathura\ -
+	autocmd VimEnter * :Alias W w
+	autocmd VimEnter * :Alias s. source\ %
+	autocmd VimEnter * :Alias .s source\ %
+augroup END
+
+" Nord was cool (No pun intended) but I prefer my smyck mod
+colorscheme smyck
+
+" Configure NetRW, which is NERDtree but inside Vim by default
+let g:netrw_liststyle = 1
+let g:netrw_banner = 0
+let g:netrw_browse_split = 2
+let g:netrw_winsize = 20
+
+" Fillchar
+set fillchars=vert:│,fold:-,stl:\ ,diff:-,stlnc:\  
+
+" Cool font for even cooler theme
+set guifont=Fira\ Code\ Light\ Retina\ 12
+
+"statusline
+set statusline=%#StatusLineNC#
+set statusline+=\ %{mode(1)}\ 
+set statusline+=%#StatusLine#
+set statusline+=\ %f\ \ 
+set statusline+=%#Normal#
+set statusline+=%=
+set statusline+=%#StatusLine#
+set statusline+=\ ft:\ 
+set statusline+=%y\ \ 
+set statusline+=%l\ /\ %L\ 
